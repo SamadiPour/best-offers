@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from app_details import AppDetails
+from .app_details import AppDetails
 
 
 @dataclass
@@ -10,7 +10,7 @@ class Item:
     source_url: str
     source_name: str
     title: str
-    details: AppDetails
+    details: AppDetails = None
 
     def get_details(self) -> None:
         if self.is_app_store():
@@ -27,16 +27,3 @@ class Item:
 
     def is_app_store(self) -> bool:
         return self.url is str and 'apps.apple.com' in self.url
-
-    # todo: complete this method
-    def to_message(self) -> str:
-        if self.is_google_play():
-            return f'{self.title} ({self.url})'
-        if self.is_app_store():
-            return f'{self.title} ({self.url})'
-        else:
-            return f'*[{self.title}]({self.url})*\n' \
-                   f'' \
-                   f'' \
-                   f'\n\n' \
-                   f'Source: [{self.source_name}]({self.source_url})'
