@@ -6,6 +6,9 @@ class IAP:
     name: str
     price: float
 
+    def __lt__(self, other):
+        return self.price < other.price
+
 
 @dataclass
 class AppDetails:
