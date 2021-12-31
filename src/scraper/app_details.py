@@ -19,4 +19,4 @@ class AppDetails:
     iap_list: list[IAP]
 
     def is_qualified(self):
-        return self.rate * self.rate_count > 200 and self.price == 0
+        return self.price == 0 and self.rate > 3.5 and self.rate * self.rate_count > 200
